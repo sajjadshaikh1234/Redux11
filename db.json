@@ -1,0 +1,46 @@
+{
+  "details": [
+    {
+      "name": "Sajjad ",
+      "email": "sajjad@gmail.com",
+      "phone": "9877181097",
+      "country": "India",
+      "id": 1
+    },
+    {
+      "name": "rehan",
+      "email": "rehan@gmail.com",
+      "phone": "9877181097",
+      "country": "Australia",
+      "id": 3
+    },
+    {
+      "name": "zaim",
+      "email": "zaim@gmail.com",
+      "phone": "9877181097",
+      "country": "Aus",
+      "id": 4
+    },
+    {
+      "name": "muntazir",
+      "email": "muntazir@gmail.com",
+      "phone": "9877181097",
+      "country": "Aus",
+      "id": 5
+    },
+    {
+      "name": "muntazim",
+      "email": "muntazim@gmail.com",
+      "phone": "9877181069",
+      "country": "India",
+      "id": 6
+    },
+    {
+      "name": " sadik",
+      "email": "sadik@gmail.com",
+      "phone": "9877181069",
+      "country": "India",
+      "id": 6
+    }
+  ]
+}
