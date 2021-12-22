@@ -12,9 +12,8 @@ const GetApide = () => {
       })
     })
   }
-
-
 }
+
 
 
 const PostApide = (request) => {
@@ -33,6 +32,7 @@ const PostApide = (request) => {
     });
   };
 };
+
 
 
 const UpdatdatApide = (request, id) => {
@@ -72,26 +72,26 @@ const UpdatdatApide = (request, id) => {
 
 
 const DeleteDEtail = (id) => {
-  console.log("id",id)
+  console.log("id", id)
   return function (dispatch) {
-    dispatch ({
-      type :DELETE_DETAIL,
-      payload:false
-        })
-        return DeleteApplication(id) .then((res)=> {
-  console.log("res", res)
-  dispatch({
-    type : DELETE_DETAIL,
-    payload: true
-  })
-        })
+    dispatch({
+      type: DELETE_DETAIL,
+      payload: false
+    })
+    return DeleteApplication(id).then((res) => {
+      console.log("res", res)
+      dispatch({
+        type: DELETE_DETAIL,
+        payload: true,
+      })
+    })
   }
-  
+
 }
 
 
 
-export { GetApide, PostApide, UpdatdatApide, DeleteDEtail};
+export { GetApide, PostApide, UpdatdatApide, DeleteDEtail };
 
 
 
