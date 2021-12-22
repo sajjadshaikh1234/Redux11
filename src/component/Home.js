@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { GetApide, DeleteDEtail } from "../redux/action/Action"
 import { useDispatch, useSelector } from 'react-redux';
 // import { unstable_batchedUpdates } from 'react-dom/cjs/react-dom.development';
@@ -17,7 +17,7 @@ const Home = () => {
         alert("Data has been delete")
         window.location.reload(false);
     }
-
+const [show,setShow] = useState(true)
 
     const result = selctor ?
         selctor.map((item, index) => {
@@ -58,29 +58,37 @@ const Home = () => {
     return (
 
         <div className="App">
-            <Link to="/" className="nav-link">Home</Link>
-            {/* <Link to="/form" className="nav-link">form</Link> */}
-
-            <h1>hiii...........,</h1>
-            <table className='table table-dark'>
-                <thead>
-                    <tr>
-
-                        <th scope='col'>Id</th>
-                        <th scope='col'>Name</th>
-                        <th scope='col'>Email</th>
-                        <th scope='col'>Phone</th>
-                        <th scope='col'>Country</th>
-                        <th scope='col'>edit</th>
-                        <th scope='col'>Delete</th>
-
-                        <th scope='col'>AddData</th>
-
-
-                    </tr>
-                </thead>
-                <tbody>{result}</tbody>
-            </table>
+            
+              {
+                    show?
+                    <div>
+                    <Link to="/" className="nav-link">Home</Link>
+                <h1>hiii...........,</h1>
+                <table className='table table-dark'>
+                    <thead>
+                        <tr>
+    
+                            <th scope='col'>Id</th>
+                            <th scope='col'>Name</th>
+                            <th scope='col'>Email</th>
+                            <th scope='col'>Phone</th>
+                            <th scope='col'>Country</th>
+                            <th scope='col'>edit</th>
+                            <th scope='col'>Delete</th>
+    
+                            <th scope='col'>AddData</th>
+    
+    
+                        </tr>
+                    </thead>
+                    <tbody>{result}</tbody>
+                </table>
+                </div>
+                : 
+                null
+              }
+              <button onClick={() => setShow(!show)}>Toggle</button>
+            
         </div>
     )
 }
