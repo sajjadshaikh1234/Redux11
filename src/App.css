@@ -45,3 +45,6 @@
 .btn {
   text-align: center !important
 }
+.delete_icon {
+  cursor: pointer;
+}

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { GetApide, DeleteDEtail } from "../redux/action/Action"
 import { useDispatch, useSelector } from 'react-redux';
 // import { unstable_batchedUpdates } from 'react-dom/cjs/react-dom.development';
+import {Navbar , NavLink,Nav , Container} from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 const Home = () => {
     const dispatch = useDispatch();
@@ -39,7 +40,7 @@ const [show,setShow] = useState(true)
                     </td>
                     <td>
 
-                        <span className="material-icons text-danger" onClick={() => dispatch(DeleteDEtail(item.id))}>
+                        <span className="material-icons text-danger delete_icon"  onClick={() => dispatch(DeleteDEtail(item.id))}>
                             delete
                         </span>
 
@@ -56,14 +57,24 @@ const [show,setShow] = useState(true)
         })
         : null
     return (
+        
 
         <div className="App">
+            <Navbar bg="dark" variant="dark">
+    <Container>
+    <Navbar.Brand href="#home" style={{color:"gray"}}>cruds</Navbar.Brand>
+    <Nav className="me-auto">
+      <Nav.Link href="/" style={{color:"blueviolet"}}>Home</Nav.Link>
+      <Nav.Link href="/form" style={{color:"blueviolet"}}>addData</Nav.Link>
+      <Nav.Link href="/edit/:id" style={{color:"blueviolet"}}>Updatedetail</Nav.Link>
+    </Nav>
+    </Container>
+  </Navbar>
             
               {
                     show?
                     <div>
-                    <Link to="/" className="nav-link">Home</Link>
-                <h1>hiii...........,</h1>
+                <h1 style={{color:"brown" , fontSize: "20px" , fontStyle:"oblique"}}>React-Redux crud opration </h1>
                 <table className='table table-dark'>
                     <thead>
                         <tr>
