@@ -1,22 +1,26 @@
 import React, { useEffect } from 'react'
-import { GetApide } from "../redux/action/Action"
+import { GetApide ,DeleteDEtail } from "../redux/action/Action"
 import { useDispatch, useSelector } from 'react-redux';
 // import { unstable_batchedUpdates } from 'react-dom/cjs/react-dom.development';
 import { Link } from 'react-router-dom'
 const Home = () => {
     const dispatch = useDispatch();
     const selctor = useSelector(state => state.Reducer.details)
-
+    const isDeleteResponse = useSelector(state => state.Reducer.isDeleteResponse)
 
     // console.log("...............", selctor)
     useEffect(() => {
         dispatch(GetApide())
     }, [dispatch])
 
+if(isDeleteResponse) {
+    alert("Data has been delete")
+    window.location.reload(false);
+}
 
 
-
-    const result = selctor.map((item, index) => {
+    const result = selctor?
+    selctor.map((item, index) => {
         // console.log(".....", item)
         return (
 
@@ -34,16 +38,17 @@ const Home = () => {
                     </Link>
                 </td>
                 <td>
-                    <Link to={`/delete/${item.id}`}>
-                        <span className="material-icons">
-                            delete
-                        </span>
-                    </Link>
+
+                    <span className="material-icons text-danger" onClick={()=>dispatch(DeleteDEtail(item.id))}>
+                        delete
+                    </span>
+
                 </td>
                 {/* <Link to={`/delete/${item.id}`}> */}
             </tr>
         )
     })
+    : null
     return (
 
         <div className="App">

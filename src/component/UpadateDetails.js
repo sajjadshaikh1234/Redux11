@@ -70,13 +70,13 @@ const UpdateDetails = (props) => {
 
   };
   if (isUpdateResponse) {
-    alert("Your data has been Update")
+    alert("Your data has been Update in list")
   }
 
 
   return (
 
-    <div className='forms'>
+    <div className='forms'> 
 
       <form>
         <div className='form-row'>

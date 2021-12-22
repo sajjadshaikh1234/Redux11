@@ -1,11 +1,13 @@
 export const GET_DETAIL = "GET_DETAIL"
 export const POST_DETAIL = "POST_DETAIL"
 export const UPDATE_DETAIL = "UPDATE_DETAIL"
+export const DELETE_DETAIL = "DELETE_DETAIL"
 const initialstate = {
   details: [],
   isResponse: false,
   isUpdateResponse: false,
-
+  isDeleteResponse : false,
+ 
 }
 
 const Reducer = (state = initialstate, action) => {
@@ -23,6 +25,11 @@ const Reducer = (state = initialstate, action) => {
       return {
         isUpdateResponse: action.payload,
       }
+
+      case DELETE_DETAIL:
+        return {
+          isDeleteResponse : action.payload,
+        }
     default:
       return state;
   }

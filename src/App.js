@@ -18,7 +18,7 @@ function App() {
 
           <Route exact path='/' element={<Home />} />
           <Route exact path='/form' element={<Forms />} />
-          <Route exact path='/edit/:id' element={<UpdateDetails />} />
+          <Route exact path='/edit/:id' element={<UpdateDetails />} />z
           {/* </Switch> */}
         </Routes>
       </Router>

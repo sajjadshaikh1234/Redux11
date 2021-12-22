@@ -1,5 +1,5 @@
 import { GET_DETAIL, POST_DETAIL, UPDATE_DETAIL, DELETE_DETAIL } from "../Constant";
-import { GetApi, PostApi, GetDetailApi, UpdateApi } from '../../api/Axiosrequest'
+import { GetApi, PostApi, GetDetailApi, UpdateApi, DeleteApplication } from '../../api/Axiosrequest'
 
 
 const GetApide = () => {
@@ -53,7 +53,45 @@ const UpdatdatApide = (request, id) => {
 }
 
 
-export { GetApide, PostApide, UpdatdatApide };
+// const DeleteDEtail = (id) => {
+//   console.log(id)
+//   return function (dispatch) {
+//     dispatch({
+// type:DELETE_DETAIL,
+// payload:false
+//     })
+//     return DeleteApplication(id).then((res) => {
+//       console.log("res", res)
+//       dispatch({
+//         type:DELETE_DETAIL,
+//         payload:true
+//       })
+//     })
+//   }
+// }
+
+
+const DeleteDEtail = (id) => {
+  console.log("id",id)
+  return function (dispatch) {
+    dispatch ({
+      type :DELETE_DETAIL,
+      payload:false
+        })
+        return DeleteApplication(id) .then((res)=> {
+  console.log("res", res)
+  dispatch({
+    type : DELETE_DETAIL,
+    payload: true
+  })
+        })
+  }
+  
+}
+
+
+
+export { GetApide, PostApide, UpdatdatApide, DeleteDEtail};
 
 
 

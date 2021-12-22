@@ -66,4 +66,33 @@ const GetDetailApiById = (id) => {
   );
 };
 
-export { GetApi, PostApi, GetDetailApiById, UpdateApi };
+
+
+// const DeleteApplication = (id) => {
+//   const headers = {
+//     'Content-Type' : 'applocation/json',
+//   }
+//   return axiosRequest (
+//     'http://localhost:3000/details/' + id,
+//     'DELETE',
+//     headers,
+//     {}
+//   )
+// }
+
+
+const DeleteApplication =(id) => {
+  console.log(">>>>>>>>",id)
+  const headers = {
+    'Content-Type' : 'application/json'
+  }
+  return axiosRequest(
+    'http://localhost:3000/details/' + id,
+    'DELETE',
+    headers,
+    {}    
+    )
+}
+
+
+export { GetApi, PostApi, GetDetailApiById, UpdateApi , DeleteApplication };
