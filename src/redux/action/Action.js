@@ -53,23 +53,6 @@ const UpdatdatApide = (request, id) => {
 }
 
 
-// const DeleteDEtail = (id) => {
-//   console.log(id)
-//   return function (dispatch) {
-//     dispatch({
-// type:DELETE_DETAIL,
-// payload:false
-//     })
-//     return DeleteApplication(id).then((res) => {
-//       console.log("res", res)
-//       dispatch({
-//         type:DELETE_DETAIL,
-//         payload:true
-//       })
-//     })
-//   }
-// }
-
 
 const DeleteDEtail = (id) => {
   console.log("id", id)

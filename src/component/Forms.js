@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { PostApide } from '../redux/action/Action';
 import { useDispatch, useSelector } from 'react-redux';
 import '../App.css';
-import { Navigate, useNavigate } from 'react-router-dom';
-import ClipLoader from "react-spinners/ClipLoader";
+import {  useNavigate } from 'react-router-dom';
 import {Navbar , NavLink,Nav , Container} from 'react-bootstrap'
 
 

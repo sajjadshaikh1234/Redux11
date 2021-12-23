@@ -2,6 +2,7 @@ import axios from 'axios'
 
 
 export async function axiosRequest(url, method, headers, params) {
+
   return params
     ? axios({
       url: url,
@@ -20,6 +21,7 @@ export async function axiosRequest(url, method, headers, params) {
 }
 
 const GetApi = () => {
+
   const headers = {
     'Content-Type': 'application/json',
   };
@@ -29,9 +31,11 @@ const GetApi = () => {
 
 
 const PostApi = (request) => {
+
   const headers = {
     'Content-Type': 'application/json',
   };
+
   return axiosRequest(
     'http://localhost:3000/details',
     'POST',
@@ -42,9 +46,11 @@ const PostApi = (request) => {
 
 
 const UpdateApi = (data, id) => {
+
   const headers = {
     'Content-Type': 'application/json',
   };
+
   return axiosRequest(
     'http://localhost:3000/details/' + id,
     'PUT',
@@ -54,9 +60,11 @@ const UpdateApi = (data, id) => {
 };
 
 const GetDetailApiById = (id) => {
+
   const headers = {
     'Content-Type': 'application/json',
   };
+
   return axiosRequest(
     'http://localhost:3000/details/' + id,
     'GET',
@@ -66,11 +74,14 @@ const GetDetailApiById = (id) => {
 };
 
 const DeleteApplication = (id) => {
+
   console.log(">>>>>>>>", id)
   const headers = {
     'Content-Type': 'application/json'
   }
+
   return axiosRequest(
+
     'http://localhost:3000/details/' + id,
     'DELETE',
     headers,
