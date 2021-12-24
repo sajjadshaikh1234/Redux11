@@ -38,7 +38,15 @@ const Login = () => {
 
         localStorage.setItem("username", username)
         localStorage.setItem("password", password)
-        navigate("/products")
+
+
+        if(username.length >=3 && password.length>=6  ) {
+          
+            navigate('/products')
+        } else {
+            alert("PLEASE ENTER lOGINdETAIL CORRECT")
+            navigate('/')
+        }
 
     }
 
@@ -46,13 +54,16 @@ const Login = () => {
 // console.log("......",username)
 // localStorage.setItem("password",password)
 
+
     return (
         <div>
             <div className="col-sm-6 offset-sm-3">
                 <h1>Login here</h1>
                 <form className='login__form'>
                     <input type="text" placeholder='USERNAME' value={username} className='form-control' onChange={changeuser} />
-
+{
+    (username.length > 0 && username.length<=4) ? <p>Plese</p> : null
+}
 
 
                     <br /> <br />
