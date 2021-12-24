@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect , useMemo} from 'react';
 import { PostApide } from '../redux/action/Action';
 import { useDispatch, useSelector } from 'react-redux';
 import '../App.css';
 import {  useNavigate } from 'react-router-dom';
 import {Navbar , NavLink,Nav , Container} from 'react-bootstrap'
+import Select from 'react-select'
+import countryList from 'react-select-country-list'
 
 
 const Forms = () => {
@@ -17,6 +19,14 @@ const Forms = () => {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [country, setCountry] = useState('');
+  const [value, setValue] = useState('')
+
+  const options = useMemo(() => countryList().getData(), [])
+
+  const changeHandler = value => {
+    setValue(value)
+  }
+
 
   const nameHandler = (e) => {
     setName(e.target.value);
@@ -40,10 +50,11 @@ const Forms = () => {
       name: name,
       email: email,
       phone: phone,
-      country: country,
+      country: value.label,
+     value:value
     };
     dispatch(PostApide(details));
-    navigate("/")
+    navigate("/products")
 
   };
 
@@ -60,8 +71,8 @@ const Forms = () => {
     <Container>
     <Navbar.Brand href="#home" style={{color:"gray"}}>cruds</Navbar.Brand>
     <Nav className="me-auto">
-      <Nav.Link href="/" style={{color:"blueviolet"}}>Home</Nav.Link>
-      <Nav.Link href="/form" style={{color:"blueviolet"}}>addData</Nav.Link>
+      <Nav.Link href="/products" style={{color:"blueviolet"}}>Home</Nav.Link>
+      {/* <Nav.Link href="/form" style={{color:"blueviolet"}}>addData</Nav.Link> */}
       <Nav.Link href="/edit/:id" style={{color:"blueviolet"}}>Updatedetail</Nav.Link>
     </Nav>
     </Container>
@@ -106,13 +117,15 @@ const Forms = () => {
               </div>
               <div className='form-group col-md-6'>
                 <label htmlFor='inputCountry'>Country</label>
-                <input
-                  type='text'
-                  className='form-control'
-                  id='inputCountry'
-                  placeholder='Country'
-                  onChange={(e) => countryHandler(e)}
-                />
+                 <Select options={options} value={value}  onChange={changeHandler} />
+                  {/* <input
+                    type='text'
+                    className='form-control'
+                    id='inputCountry'
+                    placeholder='Country'
+                    onChange={(e) => countryHandler(e)}
+
+                  /> */}
               </div>
             </div>
             <div className='btn'>

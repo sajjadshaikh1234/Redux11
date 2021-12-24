@@ -5,6 +5,7 @@ import Forms from './component/Forms';
 // import UpdateDetails from './component/Edit'
 import { BrowserRouter as Router, Route, Switch, Link, Routes } from 'react-router-dom';
 import UpdateDetails from './component/UpadateDetails';
+import Login from './component/Login'
 
 function App() {
   return (
@@ -12,14 +13,12 @@ function App() {
 
       <Router>
         <Routes>
-          {/* <Link to="/">home</Link>
-      <Link to="/form">form</Link> */}
-          {/* <Switch> */}
-
-          <Route exact path='/' element={<Home />} />
+         
+          <Route exact path="/" element={<Login /> } />
+          <Route exact path='/products' element={<Home />} />
           <Route exact path='/form' element={<Forms />} />
           <Route exact path='/edit/:id' element={<UpdateDetails />} />
-          {/* </Switch> */}
+          {/* </Switch> */} 
         </Routes>
       </Router>
     </div>

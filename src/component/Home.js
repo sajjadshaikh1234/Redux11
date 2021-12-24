@@ -3,16 +3,43 @@ import { GetApide, DeleteDEtail } from "../redux/action/Action"
 import { useDispatch, useSelector } from 'react-redux';
 // import { unstable_batchedUpdates } from 'react-dom/cjs/react-dom.development';
 import { Navbar, NavLink, Nav, Container } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 const Home = () => {
+    // console.log(".....",props.username)
+    // localStorage.getItem('username')
+    // console.log("..........")
     const dispatch = useDispatch();
     const selctor = useSelector(state => state.Reducer.details)
     const isDeleteResponse = useSelector(state => state.Reducer.isDeleteResponse)
+    const navigate = useNavigate();
+
+// localStorage.getItem("username",props.username)
+// console.log("........",props.username)
+
+const changepage = () => {
+    localStorage.clear();
+    navigate("/")
+}
+
 
     // console.log("...............", selctor)
     useEffect(() => {
         dispatch(GetApide())
+        // console.log(localStorage.getItem("username"))
     }, [dispatch])
+const [data,setData] = useState(localStorage.getItem("username"));
+
+// const checking =  () => {
+//     if(data) {
+//         console.log(data)
+// localStorage.getItem("username")
+//     } 
+    
+  
+// }
+
+
+
 
     if (isDeleteResponse) {
         alert("Data has been delete")
@@ -58,21 +85,37 @@ const Home = () => {
 
 
         <div className="App">
+
             <Navbar bg="dark" variant="dark">
-                <Container>
-                    <Navbar.Brand href="#home" style={{ color: "gray" }}>cruds</Navbar.Brand>
-                    <Nav className="me-auto">
-                        <Nav.Link href="/" style={{ color: "blueviolet" }}>Home</Nav.Link>
-                        <Nav.Link href="/form" style={{ color: "blueviolet" }}>addData</Nav.Link>
-                        <Nav.Link href="/edit/:id" style={{ color: "blueviolet" }}>Updatedetail</Nav.Link>
-                    </Nav>
-                </Container>
+
+
+                <Navbar.Brand href="#home" style={{ color: "gray" }}>cruds</Navbar.Brand>
+                <Nav className="me-auto">
+                    {
+                        localStorage.getItem("username") ?
+                            <>
+                                <Nav.Link href="/products" style={{ color: "blueviolet" }}>Home</Nav.Link>
+                                <Nav.Link href="/form" style={{ color: "blueviolet" }}>addData</Nav.Link>
+                                <Nav.Link href="/edit/:id" style={{ color: "blueviolet" }}>Updatedetail</Nav.Link>
+                                <Nav.Link href="/" style={{ color: "yellow" }} onClick={changepage} >Logout</Nav.Link>
+
+                            </>
+
+                            :
+                            <>
+                                null
+                            </>
+
+                    }
+                </Nav>
+
             </Navbar>
+
 
             {
                 show ?
                     <div>
-                        <h1 style={{ color: "brown", fontSize: "20px", fontStyle: "oblique" }}>React-Redux crud opration </h1>
+                        <h1 style={{ color: "brown", fontSize: "20px", fontStyle: "oblique" }}>welcome {data}  </h1>
                         <table className='table table-dark'>
                             <thead>
                                 <tr>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect , useMemo} from 'react';
 // import { UpdateApide } from '../redux/action/Action';
 import { useDispatch, useSelector } from 'react-redux';
 import '../App.css';
@@ -7,7 +7,8 @@ import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import GetDetailByHooks from '../hooks/GetDetailsByHooks'
 import { PostApide, UpdatdatApide } from '../redux/action/Action';
 import { Navbar, NavLink, Nav, Container } from 'react-bootstrap'
-
+import Select from 'react-select'
+import countryList from 'react-select-country-list'
 
 
 
@@ -26,6 +27,14 @@ const UpdateDetails = (props) => {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [country, setCountry] = useState('');
+  const [value, setValue] = useState('')
+
+
+  const options = useMemo(() => countryList().getData(), [])
+
+  const changeHandler = value => {
+    setValue(value)
+  }
 
   useEffect(() => {
     const data = () => {
@@ -62,10 +71,11 @@ const UpdateDetails = (props) => {
       name: name,
       email: email,
       phone: phone,
-      country: country,
+      country: value.label,
+      value : value
     };
     dispatch(UpdatdatApide(details, id));
-    navigate("/")
+    navigate("/products")
 
   };
   if (isUpdateResponse) {
@@ -80,9 +90,9 @@ const UpdateDetails = (props) => {
         <Container>
           <Navbar.Brand href="#home" style={{ color: "gray" }}>cruds</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="/" style={{ color: "blueviolet" }}>Home</Nav.Link>
+            <Nav.Link href="/products" style={{ color: "blueviolet" }}>Home</Nav.Link>
             <Nav.Link href="/form" style={{ color: "blueviolet" }}>addData</Nav.Link>
-            <Nav.Link href="/edit/:id" style={{ color: "blueviolet" }}>Updatedetail</Nav.Link>
+            {/* <Nav.Link href="/edit/:id" style={{ color: "blueviolet" }}>Updatedetail</Nav.Link> */}
           </Nav>
         </Container>
       </Navbar>
@@ -126,14 +136,15 @@ const UpdateDetails = (props) => {
           </div>
           <div className='form-group col-md-6'>
             <label htmlFor='inputCountry'>Country</label>
-            <input
+            <Select options={options} value={value}  onChange={changeHandler} />
+            {/* <input
               type='text'
               className='form-control'
               id='inputCountry'
               placeholder='Country'
               value={country}
               onChange={(e) => countryHandler(e)}
-            />
+            /> */}
           </div>
         </div>
         <div className='btn'>
