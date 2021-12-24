@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import "../App.css"
+import { Link } from 'react-router-dom'
 
 const Login = () => {
 
@@ -40,40 +41,51 @@ const Login = () => {
         localStorage.setItem("password", password)
 
 
-        if(username.length >=3 && password.length>=6  ) {
-          
+        if (username.length >= 3 && password.length >= 6) {
+
+
             navigate('/products')
         } else {
-            alert("PLEASE ENTER lOGINdETAIL CORRECT")
+
+            alert("JAAAG JA MAMU")
+           
             navigate('/')
         }
 
     }
 
-// localStorage.getItem("username",username)
-// console.log("......",username)
-// localStorage.setItem("password",password)
+    // localStorage.getItem("username",username)
+    // console.log("......",username)
+    // localStorage.setItem("password",password)
 
 
     return (
-        <div>
+        <div style={{backgroundColor:"silver"}}>
             <div className="col-sm-6 offset-sm-3">
                 <h1>Login here</h1>
                 <form className='login__form'>
-                    <input type="text" placeholder='USERNAME' value={username} className='form-control' onChange={changeuser} />
-{
-    (username.length > 0 && username.length<=4) ? <p>Plese</p> : null
-}
+                    <input type="text" placeholder='please enter the username' value={username} className='form-control' onChange={changeuser} />
+                   
 
-
-                    <br /> <br />
-                    <input type="text" placeholder='PASSWORD' value={password} className='form-control' onChange={changepassword} />
-                    <br />
+                    <input type="text" placeholder='please enter the password' value={password} className='form-control' onChange={changepassword} />
                     <button onClick={clicklogin}>Login</button>
-                </form>
-            </div>
-        </div>
-    )
+                    {/* {
+                        
+                        username.length >= 1 && username.length < 3 ? (
+                            <p className="app">username should be minimum 4 characters</p>
+                            ) : null
+                        } */}
+
+                        </form>
+                        <Link to="/forget   ">
+                  <p className="text-orange">Forgot password</p>
+                </Link>
+                    </div>
+                </div>
+
+)
 }
 
 export default Login;
+
+                 

@@ -86,16 +86,16 @@ const UpdateDetails = (props) => {
   return (
 
     <div className='forms'>
-      <Navbar bg="dark" variant="dark">
+      {/* <Navbar bg="dark" variant="dark">
         <Container>
           <Navbar.Brand href="#home" style={{ color: "gray" }}>cruds</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link href="/products" style={{ color: "blueviolet" }}>Home</Nav.Link>
             <Nav.Link href="/form" style={{ color: "blueviolet" }}>addData</Nav.Link>
-            {/* <Nav.Link href="/edit/:id" style={{ color: "blueviolet" }}>Updatedetail</Nav.Link> */}
+          
           </Nav>
         </Container>
-      </Navbar>
+      </Navbar> */}
 
       <form>
         <div className='form-row'>

@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 // import { unstable_batchedUpdates } from 'react-dom/cjs/react-dom.development';
 import { Navbar, NavLink, Nav, Container } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
+import "../App.css"
+
 const Home = () => {
     // console.log(".....",props.username)
     // localStorage.getItem('username')
@@ -13,30 +15,30 @@ const Home = () => {
     const isDeleteResponse = useSelector(state => state.Reducer.isDeleteResponse)
     const navigate = useNavigate();
 
-// localStorage.getItem("username",props.username)
-// console.log("........",props.username)
+    // localStorage.getItem("username",props.username)
+    // console.log("........",props.username)
 
-const changepage = () => {
-    localStorage.clear();
-    navigate("/")
-}
+    const changepage = () => {
+        localStorage.clear();
+        navigate("/")
+    }
 
 
     // console.log("...............", selctor)
     useEffect(() => {
         dispatch(GetApide())
-        // console.log(localStorage.getItem("username"))
+        console.log(localStorage.getItem("username"))
     }, [dispatch])
-const [data,setData] = useState(localStorage.getItem("username"));
+    const [data, setData] = useState(localStorage.getItem("username"));
 
-// const checking =  () => {
-//     if(data) {
-//         console.log(data)
-// localStorage.getItem("username")
-//     } 
-    
-  
-// }
+    // const checking =  () => {
+    //     if(data) {
+    //         console.log(data)
+    // localStorage.getItem("username")
+    //     } 
+
+
+    // }
 
 
 
@@ -94,10 +96,10 @@ const [data,setData] = useState(localStorage.getItem("username"));
                     {
                         localStorage.getItem("username") ?
                             <>
-                                <Nav.Link href="/products" style={{ color: "blueviolet" }}>Home</Nav.Link>
-                                <Nav.Link href="/form" style={{ color: "blueviolet" }}>addData</Nav.Link>
-                                <Nav.Link href="/edit/:id" style={{ color: "blueviolet" }}>Updatedetail</Nav.Link>
-                                <Nav.Link href="/" style={{ color: "yellow" }} onClick={changepage} >Logout</Nav.Link>
+                                <Nav.Link href="/products" className="logout__button" style={{ color: "blueviolet" }}>Home</Nav.Link>
+                                <Nav.Link href="/form" className="logout__button" style={{ color: "blueviolet" }}>addData</Nav.Link>
+                                <Nav.Link href="/edit/:id" className="logout__button" style={{ color: "blueviolet" }}>Updatedetail</Nav.Link>
+                                <Nav.Link href="/" className="logout__button" onClick={changepage} >Logout</Nav.Link>
 
                             </>
 
@@ -115,7 +117,7 @@ const [data,setData] = useState(localStorage.getItem("username"));
             {
                 show ?
                     <div>
-                        <h1 style={{ color: "brown", fontSize: "20px", fontStyle: "oblique" }}>welcome {data}  </h1>
+                        <h1 style={{ fontSize: "60px", fontStyle: "oblique" }}><div style={{ color: "blue" }}>welcome {data}</div>  </h1>
                         <table className='table table-dark'>
                             <thead>
                                 <tr>
@@ -127,7 +129,6 @@ const [data,setData] = useState(localStorage.getItem("username"));
                                     <th scope='col'>Country</th>
                                     <th scope='col'>edit</th>
                                     <th scope='col'>Delete</th>
-
                                     <th scope='col'>AddData</th>
 
 

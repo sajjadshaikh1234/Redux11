@@ -6,6 +6,7 @@ import Forms from './component/Forms';
 import { BrowserRouter as Router, Route, Switch, Link, Routes } from 'react-router-dom';
 import UpdateDetails from './component/UpadateDetails';
 import Login from './component/Login'
+import Forget from './component/Forgot';
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
           <Route exact path='/products' element={<Home />} />
           <Route exact path='/form' element={<Forms />} />
           <Route exact path='/edit/:id' element={<UpdateDetails />} />
-          {/* </Switch> */} 
+          <Route exact path="/forget" element={<Forget />} />
         </Routes>
       </Router>
     </div>
