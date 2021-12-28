@@ -1,4 +1,4 @@
-import React, { useState, useEffect , useMemo} from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 // import { UpdateApide } from '../redux/action/Action';
 import { useDispatch, useSelector } from 'react-redux';
 import '../App.css';
@@ -18,24 +18,18 @@ const UpdateDetails = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isUpdateResponse = useSelector((state) => state.Reducer.isUpdateResponse);
-
   // console.log('isResponse is ________________', isResponse);
   const [detalibyId] = GetDetailByHooks(id)
   console.log("........detail id..............", props.detalibyId)
-
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [country, setCountry] = useState('');
   const [value, setValue] = useState('')
-
-
   const options = useMemo(() => countryList().getData(), [])
-
   const changeHandler = value => {
     setValue(value)
   }
-
   useEffect(() => {
     const data = () => {
       if (detalibyId.data) {
@@ -47,24 +41,18 @@ const UpdateDetails = (props) => {
     }
     data()
   }, [detalibyId.data])
-
-
   const nameHandler = (e) => {
     setName(e.target.value);
   };
-
   const emailHandler = (e) => {
     setEmail(e.target.value);
   };
-
   const phoneHandler = (e) => {
     setPhone(e.target.value);
   };
-
   const countryHandler = (e) => {
     setCountry(e.target.value);
   };
-
   const clickHandler = (e) => {
     e.preventDefault();
     const details = {
@@ -72,19 +60,15 @@ const UpdateDetails = (props) => {
       email: email,
       phone: phone,
       country: value.label,
-      value : value
+      value: value
     };
     dispatch(UpdatdatApide(details, id));
     navigate("/products")
-
   };
   if (isUpdateResponse) {
     alert("Your data has been Update in list")
   }
-
-
   return (
-
     <div className='forms'>
       {/* <Navbar bg="dark" variant="dark">
         <Container>
@@ -96,7 +80,6 @@ const UpdateDetails = (props) => {
           </Nav>
         </Container>
       </Navbar> */}
-
       <form>
         <div className='form-row'>
           <div className='form-group col-md-6'>
@@ -136,7 +119,7 @@ const UpdateDetails = (props) => {
           </div>
           <div className='form-group col-md-6'>
             <label htmlFor='inputCountry'>Country</label>
-            <Select options={options} value={value}  onChange={changeHandler} />
+            <Select options={options} value={value} onChange={changeHandler} />
             {/* <input
               type='text'
               className='form-control'
